@@ -5,7 +5,8 @@
       "title": "10 Tips for Effective Writing ✍️",
       "date": "2024-04-07",
       "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
-      "tags": ["writing", "tips", "creativity"]
+      "tags": ["writing", "tips", "creativity"],
+      "imageUrl": "../uploads/picture 1.png"
     },
     {
       "id": "2",

@@ -1,5 +1,17 @@
 const express = require("express")
 const data = require("../public/data.json")
+const multer = require("multer")
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "uploads/") // Ensure the uploads folder exists
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.originalname)
+  },
+})
+
+const upload = multer({ storage: storage })
 
 const router = express.Router()
 
@@ -13,8 +25,9 @@ router.get("/:id", (req, res, next) => {
   res.json(blog)
 })
 
-router.post("/", (req, res, next) => {
+router.post("/", upload.single("imageUrl"), (req, res, next) => {
   const blog = req.body
+  blog.imageUrl = req.file.path
   data.posts.push(blog)
   res.json(blog)
 })
@@ -23,16 +36,16 @@ router.put("/:id", (req, res, next) => {
   const updatedBlog = req.body
   const { id } = req.params
   const index = data.posts.findIndex(
-    (blog) => parseInt(blog.id) == parseInt(id)
+    (blog) => parseInt(blog.id) === parseInt(id)
   )
   if (index !== -1) {
     data.posts[index] = { ...data.posts[index], ...updatedBlog }
-    res.json(data.posts[index])
+    // Now that we've updated the post, return the entire updated posts array
+    res.json(data.posts)
   } else {
     res.status(404).json({ message: "Blog post not found" })
   }
 })
-
 router.delete("/:id", (req, res, next) => {
   const { id } = req.params
   const index = data.posts.findIndex(
