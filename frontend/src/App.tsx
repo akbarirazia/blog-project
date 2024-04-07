@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import Navbar from "./components/Navbar"
 
 function App() {
   const [data, setData] = useState(null)
@@ -12,8 +13,9 @@ function App() {
 
   return (
     <>
-      <p>data from the backend</p>
-      <div> {JSON.stringify(data)}</div>
+      <Navbar />
+
+      <div className="container mx-auto "> {JSON.stringify(data)}</div>
     </>
   )
 }
