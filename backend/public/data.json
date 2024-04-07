@@ -1,0 +1,16 @@
+{
+  "posts": [
+    {
+      "title": "10 Tips for Effective Writing ✍️",
+      "date": "2024-04-07",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
+      "tags": ["writing", "tips", "creativity"]
+    },
+    {
+      "title": "The Art of Blogging 🎨",
+      "date": "2024-04-01",
+      "content": "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...",
+      "tags": ["blogging", "art", "content"]
+    }
+  ]
+}
