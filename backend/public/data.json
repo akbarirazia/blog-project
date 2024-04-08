@@ -6,7 +6,7 @@
       "min": "7 MIN READ",
       "content": "Mollis pretium integer eros et dui orci, lectus nec elit sagittis neque. Dignissim ac nullam semper aliquet volutpat, ut scelerisque.",
       "tags": "Forest",
-      "imageUrl": "uploads/picture 1.png"
+      "imageUrl": "picture1.png"
     },
     {
       "id": "2",
@@ -14,7 +14,7 @@
       "min": "7 MIN READ",
       "content": "Mollis pretium integer eros et dui orci, lectus nec elit sagittis neque. Dignissim ac nullam semper aliquet volutpat, ut scelerisque.",
       "tags": "Forest",
-      "imageUrl": "uploads/picture 1.png"
+      "imageUrl": "picture1.png"
     },
     {
       "id": "3",
@@ -22,7 +22,7 @@
       "min": "7 MIN READ",
       "content": "Mollis pretium integer eros et dui orci, lectus nec elit sagittis neque. Dignissim ac nullam semper aliquet volutpat, ut scelerisque.",
       "tags": "Forest",
-      "imageUrl": "uploads/picture 1.png"
+      "imageUrl": "FuncsVar.png"
     }
   ]
 }

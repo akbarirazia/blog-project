@@ -1,6 +1,8 @@
 const express = require("express")
 const data = require("../public/data.json")
 const multer = require("multer")
+const path = require("path")
+const { abort } = require("process")
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -25,20 +27,34 @@ router.get("/:id", (req, res, next) => {
   const blog = data.posts.find((blog) => parseInt(blog.id) == parseInt(id))
   res.json(blog)
 })
+// Define a route to serve static files from the 'uploads' directory
+router.use("/uploads", express.static(path.join(__dirname, "uploads")))
 
-router.get("/:id/image", (req, res, next) => {
-  const { id } = req.params
-  const blog = data.posts.find((blog) => parseInt(blog.id) === parseInt(id))
-  if (!blog) {
-    return res.status(404).json({ message: "Blog post not found" })
-  }
-  const imagePath = path.join(__dirname, "../", blog.imageUrl)
-  res.sendFile(imagePath)
+// Define your route to handle requests for images
+router.get("/uploads/:imageUrl", (req, res, next) => {
+  // Sanitize and validate the imageUrl parameter to ensure it's safe
+  const { imageUrl } = req.params
+
+  // Construct an absolute path to the file based on the imageUrl
+  const parentDir = path.resolve(__dirname, "..")
+  const absoluteImagePath = path.join(parentDir, "uploads", imageUrl)
+  console.log(absoluteImagePath)
+  console.log(__dirname)
+  console.log(parentDir)
+
+  // Use proper error handling to handle cases where the file does not exist or cannot be served
+  res.sendFile(absoluteImagePath, (err) => {
+    if (err) {
+      console.error("Error sending file:", err)
+      res.status(err.status || 500).send("File not found")
+    }
+  })
 })
 
 router.post("/", upload.single("imageUrl"), (req, res, next) => {
   const blog = req.body
-  blog.imageUrl = req.file.path
+  blog.imageUrl = req.file.originalname
+  console.log(blog.imageUrl)
   data.posts.push(blog)
   res.json(blog)
 })
@@ -52,7 +68,7 @@ router.put("/:id", upload.single("imageUrl"), (req, res, next) => {
   if (index !== -1) {
     // If there's a file upload, update the imageUrl property
     if (req.file) {
-      updatedBlog.imageUrl = req.file.path
+      updatedBlog.imageUrl = req.file.originalname
     }
 
     data.posts[index] = { ...data.posts[index], ...updatedBlog }

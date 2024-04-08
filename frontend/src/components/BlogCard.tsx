@@ -1,4 +1,5 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
+import placeholder from "../../public/placeholder-image.png"
 
 interface BlogCardProps {
   title: string
@@ -8,7 +9,7 @@ interface BlogCardProps {
   min: string
 }
 
-const baseUrl = "http://localhost:3000"
+const baseUrl = "http://localhost:3000/uploads"
 
 const BlogCard: React.FC<BlogCardProps> = ({
   title,
@@ -17,12 +18,39 @@ const BlogCard: React.FC<BlogCardProps> = ({
   min,
   tag,
 }) => {
+  const [image, setImage] = useState(placeholder)
+
+  useEffect(() => {
+    const fetchImage = async () => {
+      try {
+        const response = await fetch(`${baseUrl}/${imageUrl}`)
+        if (!response.ok) {
+          throw new Error("Failed to fetch image")
+        }
+        const blob = await response.blob()
+        const imgUrl = URL.createObjectURL(blob)
+        setImage(imgUrl)
+      } catch (error) {
+        console.error("Error fetching image:", error)
+      }
+    }
+
+    fetchImage()
+
+    // Clean up the URL object to prevent memory leaks
+    return () => {
+      if (image) {
+        URL.revokeObjectURL(image)
+      }
+    }
+  }, [imageUrl])
+
   return (
     <div className="lg:w-1/3 w-full px-2 pb-12">
       <div className="h-full bg-white rounded overflow-hidden shadow-md hover:shadow-lg relative smooth">
         <a className="no-underline hover:no-underline">
           <img
-            src={baseUrl + imageUrl}
+            src={image}
             className="h-48 w-full rounded-t shadow"
             alt="Blog Image"
           />
