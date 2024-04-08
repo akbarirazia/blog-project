@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-.glassmorphic-container {
+/* .glassmorphic-container {
   position: absolute;
   top: 50%;
   left: 0;
@@ -12,8 +12,12 @@
   border-radius: 1rem;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-}
+} */
 
+html,
+body {
+  overflow-x: hidden;
+}
 .background {
   background-image: url(../../backend/uploads/picture\ 1.png);
 }

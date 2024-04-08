@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import Navbar from "./components/Navbar"
 import HeroSection from "./components/HeroSection.tsx"
+import BlogCard from "./components/BlogCard.tsx"
 
 function App() {
   const [data, setData] = useState(null)
@@ -16,8 +17,11 @@ function App() {
     <>
       <Navbar />
       <HeroSection />
+      <main className="container">
+        <BlogCard />
+      </main>
 
-      <div className="container mx-auto "> {JSON.stringify(data)}</div>
+      {/* <div className="container mx-auto "> {JSON.stringify(data)}</div> */}
     </>
   )
 }
