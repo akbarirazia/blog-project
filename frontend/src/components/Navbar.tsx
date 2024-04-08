@@ -30,7 +30,7 @@ const Navbar = () => {
           </a>
         </div>
         {/* Right side - Search */}
-        <div className="flex items-center">
+        <div className="flex items-center gap-3">
           {/* Search icon */}
 
           {/* Search input (hidden by default) */}

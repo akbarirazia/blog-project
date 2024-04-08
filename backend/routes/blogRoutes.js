@@ -34,13 +34,13 @@ router.post("/", upload.single("imageUrl"), (req, res, next) => {
 
 router.put("/:id", (req, res, next) => {
   const updatedBlog = req.body
+  console.log(updatedBlog)
   const { id } = req.params
   const index = data.posts.findIndex(
     (blog) => parseInt(blog.id) === parseInt(id)
   )
   if (index !== -1) {
     data.posts[index] = { ...data.posts[index], ...updatedBlog }
-    // Now that we've updated the post, return the entire updated posts array
     res.json(data.posts)
   } else {
     res.status(404).json({ message: "Blog post not found" })

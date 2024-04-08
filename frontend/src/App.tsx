@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import Navbar from "./components/Navbar"
+import HeroSection from "./components/HeroSection.tsx"
 
 function App() {
   const [data, setData] = useState(null)
@@ -14,6 +15,7 @@ function App() {
   return (
     <>
       <Navbar />
+      <HeroSection />
 
       <div className="container mx-auto "> {JSON.stringify(data)}</div>
     </>
