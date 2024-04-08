@@ -19,10 +19,21 @@ router.get("/", (req, res, next) => {
   res.json(data)
   res.status(200)
 })
+
 router.get("/:id", (req, res, next) => {
   const { id } = req.params
   const blog = data.posts.find((blog) => parseInt(blog.id) == parseInt(id))
   res.json(blog)
+})
+
+router.get("/:id/image", (req, res, next) => {
+  const { id } = req.params
+  const blog = data.posts.find((blog) => parseInt(blog.id) === parseInt(id))
+  if (!blog) {
+    return res.status(404).json({ message: "Blog post not found" })
+  }
+  const imagePath = path.join(__dirname, "../", blog.imageUrl)
+  res.sendFile(imagePath)
 })
 
 router.post("/", upload.single("imageUrl"), (req, res, next) => {
@@ -33,21 +44,23 @@ router.post("/", upload.single("imageUrl"), (req, res, next) => {
 })
 
 router.put("/:id", upload.single("imageUrl"), (req, res, next) => {
-  const updatedBlog = req.body;
-  const { id } = req.params;
-  const index = data.posts.findIndex(blog => parseInt(blog.id) === parseInt(id));
+  const updatedBlog = req.body
+  const { id } = req.params
+  const index = data.posts.findIndex(
+    (blog) => parseInt(blog.id) === parseInt(id)
+  )
   if (index !== -1) {
     // If there's a file upload, update the imageUrl property
     if (req.file) {
-      updatedBlog.imageUrl = req.file.path;
+      updatedBlog.imageUrl = req.file.path
     }
-    
-    data.posts[index] = { ...data.posts[index], ...updatedBlog };
-    res.json(data.posts[index]); // Send the updated blog post in the response
+
+    data.posts[index] = { ...data.posts[index], ...updatedBlog }
+    res.json(data.posts[index]) // Send the updated blog post in the response
   } else {
-    res.status(404).json({ message: "Blog post not found" });
+    res.status(404).json({ message: "Blog post not found" })
   }
-});
+})
 
 router.delete("/:id", (req, res, next) => {
   const { id } = req.params

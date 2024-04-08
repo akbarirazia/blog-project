@@ -2,18 +2,27 @@
   "posts": [
     {
       "id": "1",
-      "title": "10 Tips for Effective Writing ✍️",
-      "date": "2024-04-07",
-      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
-      "tags": ["writing", "tips", "creativity"],
-      "imageUrl": "../uploads/picture 1.png"
+      "title": "What is life but a teardrop in the eye of infinity?",
+      "min": "7 MIN READ",
+      "content": "Mollis pretium integer eros et dui orci, lectus nec elit sagittis neque. Dignissim ac nullam semper aliquet volutpat, ut scelerisque.",
+      "tags": "Forest",
+      "imageUrl": "uploads/picture 1.png"
     },
     {
       "id": "2",
-      "title": "The Art of Blogging 🎨",
-      "date": "2024-04-01",
-      "content": "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...",
-      "tags": ["blogging", "art", "content"]
+      "title": "What is life but a teardrop in the eye of infinity?",
+      "min": "7 MIN READ",
+      "content": "Mollis pretium integer eros et dui orci, lectus nec elit sagittis neque. Dignissim ac nullam semper aliquet volutpat, ut scelerisque.",
+      "tags": "Forest",
+      "imageUrl": "uploads/picture 1.png"
+    },
+    {
+      "id": "3",
+      "title": "What is life but a teardrop in the eye of infinity?",
+      "min": "7 MIN READ",
+      "content": "Mollis pretium integer eros et dui orci, lectus nec elit sagittis neque. Dignissim ac nullam semper aliquet volutpat, ut scelerisque.",
+      "tags": "Forest",
+      "imageUrl": "uploads/picture 1.png"
     }
   ]
 }
