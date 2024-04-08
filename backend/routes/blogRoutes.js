@@ -32,20 +32,23 @@ router.post("/", upload.single("imageUrl"), (req, res, next) => {
   res.json(blog)
 })
 
-router.put("/:id", (req, res, next) => {
-  const updatedBlog = req.body
-  console.log(updatedBlog)
-  const { id } = req.params
-  const index = data.posts.findIndex(
-    (blog) => parseInt(blog.id) === parseInt(id)
-  )
+router.put("/:id", upload.single("imageUrl"), (req, res, next) => {
+  const updatedBlog = req.body;
+  const { id } = req.params;
+  const index = data.posts.findIndex(blog => parseInt(blog.id) === parseInt(id));
   if (index !== -1) {
-    data.posts[index] = { ...data.posts[index], ...updatedBlog }
-    res.json(data.posts)
+    // If there's a file upload, update the imageUrl property
+    if (req.file) {
+      updatedBlog.imageUrl = req.file.path;
+    }
+    
+    data.posts[index] = { ...data.posts[index], ...updatedBlog };
+    res.json(data.posts[index]); // Send the updated blog post in the response
   } else {
-    res.status(404).json({ message: "Blog post not found" })
+    res.status(404).json({ message: "Blog post not found" });
   }
-})
+});
+
 router.delete("/:id", (req, res, next) => {
   const { id } = req.params
   const index = data.posts.findIndex(
