@@ -57,6 +57,10 @@ router.post("/", upload.single("imageUrl"), (req, res, next) => {
   const blog = req.body
   blog.imageUrl = req.file.originalname
   data.posts.push(blog)
+  if (req.file) {
+    const filenameWithoutSpaces = req.file.originalname
+    blog.imageUrl = filenameWithoutSpaces
+  }
 
   // Write updated data to the JSON file
   const filePath = path.join(parentDir, "/public/data.json")
