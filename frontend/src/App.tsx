@@ -5,7 +5,7 @@ import BlogCard from "./components/BlogCard.tsx"
 
 function App() {
   const [data, setData] = useState<any>(null)
-  const [images, setImages] = useState<any>(null)
+  // const [images, setImages] = useState<any>(null)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,9 +23,9 @@ function App() {
     }
 
     fetchData()
-  }, [])
+  }, [data])
 
-  console.log(images)
+  // console.log(images)
 
   const renderBlog = (data: any) => {
     return data.posts.map((blog: any) => (
@@ -36,6 +36,7 @@ function App() {
         imageUrl={blog.imageUrl}
         min={blog.min}
         tag={blog.tag}
+        id={blog.id}
       />
     ))
   }

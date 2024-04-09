@@ -2,6 +2,7 @@ const express = require("express")
 const data = require("../public/data.json")
 const multer = require("multer")
 const path = require("path")
+const fs = require("fs")
 const { abort } = require("process")
 
 const storage = multer.diskStorage({
@@ -24,7 +25,7 @@ router.get("/", (req, res, next) => {
 
 router.get("/:id", (req, res, next) => {
   const { id } = req.params
-  const blog = data.posts.find((blog) => parseInt(blog.id) == parseInt(id))
+  const blog = data.posts.find((blog) => parseInt(blog.id) === parseInt(id))
   res.json(blog)
 })
 // Define a route to serve static files from the 'uploads' directory
@@ -38,9 +39,9 @@ router.get("/uploads/:imageUrl", (req, res, next) => {
   // Construct an absolute path to the file based on the imageUrl
   const parentDir = path.resolve(__dirname, "..")
   const absoluteImagePath = path.join(parentDir, "uploads", imageUrl)
-  console.log(absoluteImagePath)
-  console.log(__dirname)
-  console.log(parentDir)
+  // console.log(absoluteImagePath)
+  // console.log(__dirname)
+  // console.log(parentDir)
 
   // Use proper error handling to handle cases where the file does not exist or cannot be served
   res.sendFile(absoluteImagePath, (err) => {
@@ -52,15 +53,36 @@ router.get("/uploads/:imageUrl", (req, res, next) => {
 })
 
 router.post("/", upload.single("imageUrl"), (req, res, next) => {
+  const parentDir = path.resolve(__dirname, "..")
   const blog = req.body
   blog.imageUrl = req.file.originalname
-  console.log(blog.imageUrl)
   data.posts.push(blog)
-  res.json(blog)
+
+  // Write updated data to the JSON file
+  const filePath = path.join(parentDir, "/public/data.json")
+  fs.writeFile(filePath, JSON.stringify(data, null, 2), (err) => {
+    if (err) {
+      console.error("Error writing to JSON file:", err)
+      res.status(500).json({ error: "Failed to write to JSON file" })
+    } else {
+      console.log("Blog added and JSON file updated successfully.")
+      res.json(blog)
+    }
+  })
 })
+
+// router.post("/", upload.single("imageUrl"), (req, res, next) => {
+//   const blog = req.body
+//   blog.imageUrl = req.file.originalname
+//   console.log(blog.imageUrl)
+//   data.posts.push(blog)
+//   fs.writeFile(blog, data.posts)
+//   res.json(blog)
+// })
 
 router.put("/:id", upload.single("imageUrl"), (req, res, next) => {
   const updatedBlog = req.body
+  console.log(updatedBlog)
   const { id } = req.params
   const index = data.posts.findIndex(
     (blog) => parseInt(blog.id) === parseInt(id)
@@ -68,7 +90,8 @@ router.put("/:id", upload.single("imageUrl"), (req, res, next) => {
   if (index !== -1) {
     // If there's a file upload, update the imageUrl property
     if (req.file) {
-      updatedBlog.imageUrl = req.file.originalname
+      const filenameWithoutSpaces = req.file.originalname
+      updatedBlog.imageUrl = filenameWithoutSpaces
     }
 
     data.posts[index] = { ...data.posts[index], ...updatedBlog }
@@ -80,13 +103,13 @@ router.put("/:id", upload.single("imageUrl"), (req, res, next) => {
 
 router.delete("/:id", (req, res, next) => {
   const { id } = req.params
+  console.log(id)
   const index = data.posts.findIndex(
     (blog) => parseInt(blog.id) === parseInt(id)
   )
-
-  data.posts.splice(index, 1)
   if (index !== -1) {
     data.posts.splice(index, 1)
+    res.status(200).json(data.posts)
   } else {
     res.status(404).send("No such blog was found")
   }

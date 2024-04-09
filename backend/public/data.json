@@ -1,7 +1,7 @@
 {
   "posts": [
     {
-      "id": "1",
+      "id": "0",
       "title": "What is life but a teardrop in the eye of infinity?",
       "min": "7 MIN READ",
       "content": "Mollis pretium integer eros et dui orci, lectus nec elit sagittis neque. Dignissim ac nullam semper aliquet volutpat, ut scelerisque.",
@@ -9,12 +9,12 @@
       "imageUrl": "picture1.png"
     },
     {
-      "id": "2",
+      "id": "1",
       "title": "What is life but a teardrop in the eye of infinity?",
       "min": "7 MIN READ",
       "content": "Mollis pretium integer eros et dui orci, lectus nec elit sagittis neque. Dignissim ac nullam semper aliquet volutpat, ut scelerisque.",
       "tags": "Forest",
-      "imageUrl": "picture1.png"
+      "imageUrl": "picture 2.png"
     },
     {
       "id": "3",
@@ -23,6 +23,12 @@
       "content": "Mollis pretium integer eros et dui orci, lectus nec elit sagittis neque. Dignissim ac nullam semper aliquet volutpat, ut scelerisque.",
       "tags": "Forest",
       "imageUrl": "FuncsVar.png"
+    },
+    {
+      "id": "19",
+      "title": "my new adventure",
+      "content": "lorem",
+      "imageUrl": "Screenshot from 2024-04-08 16-03-49.png"
     }
   ]
 }
