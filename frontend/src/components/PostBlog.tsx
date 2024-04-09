@@ -1,5 +1,4 @@
 import React, { useState } from "react"
-import EditModal from "./EditModal"
 import PostModal from "./PostModal"
 
 function PostBlog() {

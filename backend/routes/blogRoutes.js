@@ -51,11 +51,16 @@ router.get("/uploads/:imageUrl", (req, res, next) => {
     }
   })
 })
-
 router.post("/", upload.single("imageUrl"), (req, res, next) => {
   const parentDir = path.resolve(__dirname, "..")
   const blog = req.body
-  // blog.imageUrl = req.file.originalname
+
+  // Retrieve the file name of the uploaded file
+  const uploadedFileName = req.file.filename
+
+  // Assign the uploaded file name to the imageUrl property in the blog object
+  blog.imageUrl = uploadedFileName
+
   data.posts.unshift(blog)
 
   // Write updated data to the JSON file
