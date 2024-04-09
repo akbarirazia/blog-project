@@ -1,6 +1,13 @@
 {
   "posts": [
     {
+      "id": "87",
+      "title": "",
+      "content": "",
+      "tag": "",
+      "min": ""
+    },
+    {
       "id": "1",
       "title": "What is life but a teardrop in the eye of infinity?",
       "min": "7 MIN READ",
@@ -20,7 +27,7 @@
       "id": "19",
       "title": "my new adventure45",
       "content": "lorem",
-      "imageUrl": "placeholder-image.png",
+      "imageUrl": "Screenshot from 2024-04-08 15-56-38.png",
       "tag": "Cool",
       "min": "8 MIN READ"
     },
@@ -47,12 +54,6 @@
       "title": "my new adventure",
       "content": "lorem",
       "imageUrl": "Screenshot from 2024-04-08 15-56-38.png"
-    },
-    {
-      "id": "36",
-      "title": "my new adventurehpihnlyutrftgyhujik",
-      "content": "lorem",
-      "imageUrl": "picture 1.png"
     }
   ]
 }

@@ -8,44 +8,38 @@ interface PostModalProps {
 }
 
 const PostModal: React.FC<PostModalProps> = ({ closeModal }) => {
+  const [image, setImage] = useState<File | null>(null)
   const handleSubmit = async (e: any) => {
     e.preventDefault()
-    const id = uuidv4()
+    const id = Math.floor(Math.random() * 100)
     // Prepare the form data
     const formData = new FormData()
+    formData.append("id", `${id}`)
     formData.append("title", e.target.title.value)
     formData.append("content", e.target.content.value)
     formData.append("tag", e.target.tag.value)
     formData.append("min", e.target.min.value)
-    formData.append("image", e.target.image.files[0])
-    formData.append("id", id)
-    console.log(formData)
+    formData.append("imageUrl", e.target.image.files[0])
+
+    console.log(e.target.image.files[0])
     try {
-      // Send the form data to the backend
-      const response = await fetch(`http://localhost:3000/`, {
-        method: "POST",
+      const response = await axios.post("http://localhost:3000/", formData, {
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "multipart/form-data",
         },
-        body: JSON.stringify({
-          formData,
-        }),
       })
-      const data = await response.json()
-      console.log(data)
 
-      //   const response = await axios.post("http://localhost:3000/", formData, {
-      //     headers: {
-      //       "Content-Type": "multipart/form-data",
-      //     },
-      //   })
-
-      //   console.log("Response:", response)
-      //   console.log("Data:", response.data)
+      console.log("Response:", response)
+      console.log("Data:", response.data)
       closeModal()
     } catch (error) {
       console.error("Error posting data:", error)
-      closeModal()
+    }
+  }
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files.length > 0) {
+      setImage(e.target.files[0]) // Store the file object
+      // console.log(e.target.files[0])
     }
   }
 
@@ -62,7 +56,12 @@ const PostModal: React.FC<PostModalProps> = ({ closeModal }) => {
           </button>
           <br />
           <div className="max-w-sm w-full lg:max-w-full ">
-            <input type="file" name="image" id="image" />
+            <input
+              type="file"
+              name="image"
+              id="image"
+              onChange={handleImageChange}
+            />
 
             <div className="border-r border-b border-l bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
               <div className="mb-8">

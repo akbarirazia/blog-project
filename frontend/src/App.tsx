@@ -28,10 +28,10 @@ function App() {
 
   // console.log(images)
 
-  const renderBlog = (data: any) => {
+  const renderBlog = (data: any, index: number) => {
     return data.posts.map((blog: any) => (
       <BlogCard
-        key={blog.id}
+        key={index}
         title={blog.title}
         content={blog.content}
         imageUrl={blog.imageUrl}
