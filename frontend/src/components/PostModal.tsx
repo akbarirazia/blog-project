@@ -10,14 +10,18 @@ const PostModal: React.FC<PostModalProps> = ({ closeModal }) => {
   const [image, setImage] = useState<File | null>(null)
   const handleSubmit = async (e: any) => {
     e.preventDefault()
-    const id = Math.floor(Math.random() * 100)
+    const id = Math.floor(Math.random() * 1000)
     // Prepare the form data
     const formData = new FormData()
     formData.append("id", `${id}`)
-    formData.append("title", e.target.title.value)
-    formData.append("content", e.target.content.value)
-    formData.append("tag", e.target.tag.value)
-    formData.append("min", e.target.min.value)
+    formData.append("title", e.target.title.value || "title")
+    formData.append(
+      "content",
+      e.target.content.value ||
+        "Generic content, lorem ipsum dolor sit amet con etiam null tempor"
+    )
+    formData.append("tag", e.target.tag.value || "Tag")
+    formData.append("min", e.target.min.value || "7 MIN")
     formData.append("imageUrl", e.target.image.files[0])
 
     console.log(e.target.image.files[0])
@@ -53,6 +57,13 @@ const PostModal: React.FC<PostModalProps> = ({ closeModal }) => {
             className="bg-black hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full mb-2 float-end"
           >
             Post Blog
+          </button>
+          <button
+            type="button"
+            className="bg-black hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full mb-2 float-end me-3"
+            onClick={() => closeModal()}
+          >
+            Close
           </button>
           <br />
           <div className="max-w-sm w-full lg:max-w-full ">

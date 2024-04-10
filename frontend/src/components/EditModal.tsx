@@ -73,6 +73,13 @@ const EditModal: React.FC<ModalProps> = ({
         >
           Confirm
         </button>
+        <button
+          type="button"
+          className="bg-black hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full mb-2 float-end me-3"
+          onClick={() => isClose()}
+        >
+          Close
+        </button>
         <br />
         <div className="max-w-sm w-full lg:max-w-full ">
           <img src={image} alt={title} className="rounded" />

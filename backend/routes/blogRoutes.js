@@ -56,10 +56,12 @@ router.post("/", upload.single("imageUrl"), (req, res, next) => {
   const blog = req.body
 
   // Retrieve the file name of the uploaded file
-  const uploadedFileName = req.file.filename
+  if (req.file) {
+    const uploadedFileName = req.file.filename
+    blog.imageUrl = uploadedFileName
+  }
 
   // Assign the uploaded file name to the imageUrl property in the blog object
-  blog.imageUrl = uploadedFileName
 
   data.posts.unshift(blog)
 
