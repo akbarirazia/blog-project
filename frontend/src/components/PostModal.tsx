@@ -31,7 +31,7 @@ const PostModal: React.FC<PostModalProps> = ({ closeModal }) => {
       console.log("Response:", response)
       console.log("Data:", response.data)
       closeModal()
-      window.reload()
+      window.location.reload()
     } catch (error) {
       console.error("Error posting data:", error)
     }

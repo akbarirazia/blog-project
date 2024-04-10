@@ -1,6 +1,14 @@
 {
   "posts": [
     {
+      "id": "2",
+      "title": "Mobile",
+      "content": "SOmething",
+      "tag": "Hello",
+      "min": "8 MIN",
+      "imageUrl": "photo_2024-04-08_09-06-05.jpg"
+    },
+    {
       "id": "95",
       "title": "kw",
       "content": "fls",

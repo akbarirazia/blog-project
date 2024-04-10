@@ -3,10 +3,13 @@ import Navbar from "./components/Navbar"
 import HeroSection from "./components/HeroSection.tsx"
 import BlogCard from "./components/BlogCard.tsx"
 import PostBlog from "./components/PostBlog.tsx"
+import Footer from "./components/Footer.tsx"
+import Loading from "./components/Loading.tsx"
 
 function App() {
   const [data, setData] = useState<any>(null)
   // const [images, setImages] = useState<any>(null)
+  const [isLoading, setIsLoading] = useState<boolean>(true)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -18,6 +21,7 @@ function App() {
 
         const data = await response.json()
         setData(data)
+        setIsLoading(false)
       } catch (err) {
         console.log(err)
       }
@@ -28,8 +32,8 @@ function App() {
 
   // console.log(images)
 
-  const renderBlog = (data: any, index: number) => {
-    return data.posts.map((blog: any) => (
+  const renderBlog = (data: any) => {
+    return data.posts.map((blog: any, index: number) => (
       <BlogCard
         key={index}
         title={blog.title}
@@ -47,11 +51,19 @@ function App() {
       <Navbar />
       <HeroSection />
       <PostBlog />
-      <main className=" w-screen flex justify-center flex-wrap items-center ">
-        <div className="container flex flex-wrap">
-          {data && renderBlog(data)}
-        </div>
-      </main>
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <main
+          className=" w-screen flex justify-center flex-wrap items-center "
+          id="main"
+        >
+          <div className="container flex flex-wrap">
+            {data && renderBlog(data)}
+          </div>
+        </main>
+      )}
+      <Footer />
     </>
   )
 }

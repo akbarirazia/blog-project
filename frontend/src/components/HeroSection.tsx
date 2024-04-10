@@ -1,5 +1,3 @@
-import React from "react"
-
 const HeroSection = () => {
   return (
     <section className="bg-gray-100 py-16 w-screen flex justify-center items-center background h-96 ">
@@ -15,7 +13,7 @@ const HeroSection = () => {
                 and entertaining content that will blow your mind!
               </p>
               <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full">
-                Start Exploring
+                <a href="#main">Start Exploring</a>
               </button>
             </div>
           </div>
