@@ -13,7 +13,7 @@ function PostBlog() {
           setShowModal(true)
         }}
       >
-        Pos a Blog
+        Post a Blog
       </button>
     </div>
   )
