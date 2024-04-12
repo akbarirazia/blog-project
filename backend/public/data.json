@@ -1,14 +1,6 @@
 {
   "posts": [
     {
-      "id": "459",
-      "title": "title",
-      "content": "Generic content, lorem ipsum dolor sit amet con etiam null tempor",
-      "tag": "Tag",
-      "min": "7 MIN",
-      "imageUrl": "undefined"
-    },
-    {
       "id": "9",
       "title": "title",
       "content": "Generic content, lorem ipsum dolor sit amet con etiam null tempor",
