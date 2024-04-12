@@ -8,12 +8,15 @@ const Navbar = () => {
         <div className="flex items-center">
           {/* Logo */}
           <a href="#" className="text-white text-2xl font-bold mr-6">
-            Logo
+            HumorHub
           </a>
         </div>
 
         <div className="flex items-center gap-3">
-          <a href="#" className="text-white hover:text-gray-400">
+          <a
+            href="https://github.com/akbarirazia/blog-project"
+            className="text-white hover:text-gray-400"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
