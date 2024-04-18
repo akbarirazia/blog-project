@@ -1,5 +1,3 @@
-import skull from "../../public/skull.png"
-
 const Navbar = () => {
   return (
     <nav className="bg-gray-800 py-4">

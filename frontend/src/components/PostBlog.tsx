@@ -1,5 +1,6 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import PostModal from "./PostModal"
+import NewModal from "./NewModal"
 
 function PostBlog() {
   const [showModal, setShowModal] = useState(false)

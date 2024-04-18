@@ -1,5 +1,5 @@
 import axios from "axios"
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import ReactDOM from "react-dom"
 
 interface PostModalProps {
@@ -7,7 +7,12 @@ interface PostModalProps {
 }
 
 const PostModal: React.FC<PostModalProps> = ({ closeModal }) => {
-  const [image, setImage] = useState<File | null>(null)
+  const [imagePreview, setImagePreview] = useState<string | null>(null)
+
+  useEffect(() => {
+    const body = document.getElementsByTagName("html")[0] as HTMLElement
+    body.style.overflow = "hidden"
+  }, [])
   const handleSubmit = async (e: any) => {
     e.preventDefault()
     const id = Math.floor(Math.random() * 1000)
@@ -42,77 +47,17 @@ const PostModal: React.FC<PostModalProps> = ({ closeModal }) => {
   }
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
-      setImage(e.target.files[0]) // Store the file object
-      // console.log(e.target.files[0])
+      const file = e.target.files[0]
+      // Read the file and set the image preview URL
+      const reader = new FileReader()
+      reader.onload = () => {
+        setImagePreview(reader.result as string)
+      }
+      reader.readAsDataURL(file)
     }
   }
 
-  return ReactDOM.createPortal(
-    <>
-      <div className="fixed top-0 bottom-0 left-0 right-0 bg-black bg-opacity-70"></div>
-      <div className="fixed z-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 lg:w-1/2 lg:min-h-1/2 bg-white rounded text-black p-2 pb-8 w-3/4 ">
-        <form onSubmit={handleSubmit}>
-          <button
-            type="submit"
-            className="bg-black hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full mb-2 float-end"
-          >
-            Post Blog
-          </button>
-          <button
-            type="button"
-            className="bg-black hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full mb-2 float-end me-3"
-            onClick={() => closeModal()}
-          >
-            Close
-          </button>
-          <br />
-          <div className="max-w-sm w-full lg:max-w-full ">
-            <input
-              type="file"
-              name="image"
-              id="image"
-              onChange={handleImageChange}
-            />
-
-            <div className="border-r border-b border-l bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
-              <div className="mb-8">
-                <input
-                  type="text"
-                  name="title"
-                  className="text-gray-900 font-bold text-xl mb-2"
-                  placeholder="Title"
-                />
-
-                <input
-                  type="text"
-                  name="content"
-                  className="text-gray-700 text-base"
-                  placeholder="Content"
-                />
-              </div>
-              <div className="flex items-center">
-                <div className="text-sm">
-                  <input
-                    type="text"
-                    name="tag"
-                    className="text-gray-900 leading-none"
-                    placeholder="Tag"
-                  />
-                  <input
-                    type="text"
-                    name="min"
-                    className="text-gray-600"
-                    placeholder="Min"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </form>
-      </div>
-    </>,
-    document.getElementById("portal")
-  )
+  return <></>
 }
 
 export default PostModal

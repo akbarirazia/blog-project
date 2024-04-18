@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react"
-import ReactDOM from "react-dom"
+import { Link } from "react-router-dom"
 import placeholder from "../../public/placeholder-image.png"
 import EditModal from "./EditModal"
-import Modal from "./Modal"
+import ConfirmModal from "./ConfirmModal" // Assuming you have a ConfirmModal component
+import Toast from "./Toast" // Import the Toast component
 
 interface BlogCardProps {
   title: string
@@ -25,8 +26,9 @@ const BlogCard: React.FC<BlogCardProps> = ({
 }) => {
   const [image, setImage] = useState(placeholder)
   const [showMenu, setShowMenu] = useState(false)
-  const [showModal, setShowModal] = useState(false)
   const [showEditModal, setShowEditModal] = useState(false)
+  const [showConfirmModal, setShowConfirmModal] = useState(false)
+  const [showDeleteToast, setShowDeleteToast] = useState(false) // State for showing delete success toast
 
   useEffect(() => {
     const fetchImage = async () => {
@@ -61,15 +63,13 @@ const BlogCard: React.FC<BlogCardProps> = ({
     if (showMenu) {
       setShowMenu(false)
     }
-    if (showModal) {
-      setShowModal(false)
-    }
   }
 
-  const handleViewClick = () => {
-    setShowModal(true)
+  const handleDelete = () => {
+    setShowConfirmModal(true)
   }
-  const handleDelete = async () => {
+
+  const confirmedDelete = async () => {
     try {
       await fetch(`http://localhost:3000/${id}`, {
         method: "DELETE",
@@ -77,53 +77,57 @@ const BlogCard: React.FC<BlogCardProps> = ({
           "Content-Type": "application/json",
         },
       })
+      setShowConfirmModal(false) // Close the confirmation modal
+      setShowDeleteToast(true) // Show delete success toast
+      setTimeout(() => setShowDeleteToast(false), 3000) // Hide the toast after 3 seconds
     } catch (error) {
       console.log(error)
     }
   }
+
+  const truncatedContent =
+    content.length > 200 ? `${content.slice(0, 200)}...` : content
+
   return (
     <>
-      {showModal && (
-        <Modal
-          title={title}
-          content={content}
-          image={image}
-          tag={tag}
-          min={min}
-          isClose={() => {
-            setShowModal(false)
-          }}
+      {showConfirmModal && (
+        <ConfirmModal
+          message="Are you sure you want to delete this blog post?"
+          onConfirm={confirmedDelete}
+          onCancel={() => setShowConfirmModal(false)}
         />
       )}
-
-      {showEditModal && (
-        <EditModal
-          title={title}
-          content={content}
-          image={image}
-          tag={tag}
-          min={min}
-          id={id}
-          isClose={() => {
-            setShowEditModal(false)
-          }}
+      {showDeleteToast && (
+        <Toast
+          message="Blog post successfully deleted!"
+          onClose={() => setShowDeleteToast(false)}
         />
       )}
       <div className="lg:w-1/3 w-full px-2 pb-12" onClick={handleClose}>
-        <div className="h-full bg-white rounded overflow-hidden shadow-md hover:shadow-lg relative smooth">
+        <div className="h-full bg-white rounded shadow-md hover:shadow-lg relative smooth">
           <div className="cursor-pointer">
-            <img
-              src={image}
-              className="h-48 w-full rounded-t shadow"
-              alt="Blog Image"
-            />
-            <div className="p-6 h-auto md:h-48">
-              <p className="text-gray-600 text-xs md:text-sm">{tag}</p>
-              <div className="font-bold text-xl text-gray-900">{title}</div>
-              <p className="text-gray-800 font-serif text-base mb-5">
-                {content}
-              </p>
-            </div>
+            <Link to={`/view/${id}`}>
+              <img
+                src={image}
+                className="h-48 w-full rounded-t shadow cursor-pointer"
+                alt="Blog Image"
+              />
+              <div className="p-6 h-auto md:h-48 cursor-pointer">
+                <p className="text-gray-600 text-xs md:text-sm">{tag}</p>
+                <div className="font-bold text-xl text-gray-900">{title}</div>
+                <p className="text-gray-800 font-serif text-base mb-5">
+                  {truncatedContent}
+                </p>
+                {content.length > 200 && (
+                  <Link
+                    to={`/view/${id}`}
+                    className="text-blue-500 hover:underline"
+                  >
+                    Read more
+                  </Link>
+                )}
+              </div>
+            </Link>
             {showMenu && (
               <div className="absolute right-0 bottom-0 bg-white border rounded shadow-md mt-2 mr-2">
                 <ul className="divide-y divide-gray-200">
@@ -139,11 +143,8 @@ const BlogCard: React.FC<BlogCardProps> = ({
                   >
                     Delete
                   </li>
-                  <li
-                    className="py-2 px-4 hover:bg-gray-100 cursor-pointer"
-                    onClick={handleViewClick}
-                  >
-                    View
+                  <li className="py-2 px-4 hover:bg-gray-100 cursor-pointer">
+                    <Link to={`/view/${id}`}>View </Link>
                   </li>
                 </ul>
               </div>

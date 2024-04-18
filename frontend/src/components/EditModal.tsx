@@ -26,6 +26,7 @@ const EditModal: React.FC<ModalProps> = ({
   const [editedTag, setEditedTag] = useState(tag || "")
   const [editedMin, setEditedMin] = useState(min || "")
   const [editedImage, setEditedImage] = useState<File | null>(null)
+  const portalRoot = document.getElementById("portal")
 
   const handleConfirm = async () => {
     console.log(editedImage)
@@ -50,7 +51,7 @@ const EditModal: React.FC<ModalProps> = ({
           },
         }
       )
-
+      console.log(response)
       isClose()
     } catch (error) {
       console.error("Error updating blog post:", error)
@@ -126,7 +127,7 @@ const EditModal: React.FC<ModalProps> = ({
         </div>
       </div>
     </>,
-    document.getElementById("portal")
+    portalRoot as HTMLElement
   )
 }
 

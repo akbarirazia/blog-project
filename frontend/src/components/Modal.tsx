@@ -1,4 +1,3 @@
-import React, { useEffect } from "react"
 import ReactDOM from "react-dom"
 
 interface ModalProps {
@@ -49,7 +48,7 @@ const Modal: React.FC<ModalProps> = ({
         </div>
       </div>
     </>,
-    document.getElementById("portal")
+    document.getElementById("portal") as HTMLElement
   )
 }
 
