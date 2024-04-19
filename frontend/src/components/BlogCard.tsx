@@ -131,12 +131,11 @@ const BlogCard: React.FC<BlogCardProps> = ({
             {showMenu && (
               <div className="absolute right-0 bottom-0 bg-white border rounded shadow-md mt-2 mr-2">
                 <ul className="divide-y divide-gray-200">
-                  <li
-                    className="py-2 px-4 hover:bg-gray-100 cursor-pointer"
-                    onClick={() => setShowEditModal(true)}
-                  >
-                    Edit
-                  </li>
+                  <Link to={`/edit/${id}`}>
+                    <li className="py-2 px-4 hover:bg-gray-100 cursor-pointer">
+                      Edit
+                    </li>
+                  </Link>
                   <li
                     className="py-2 px-4 hover:bg-gray-100 cursor-pointer"
                     onClick={handleDelete}
