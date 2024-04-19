@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import placeholder from "../../public/placeholder-image.png"
-import EditModal from "./EditModal"
 import ConfirmModal from "./ConfirmModal" // Assuming you have a ConfirmModal component
 import Toast from "./Toast" // Import the Toast component
 
@@ -26,7 +25,6 @@ const BlogCard: React.FC<BlogCardProps> = ({
 }) => {
   const [image, setImage] = useState(placeholder)
   const [showMenu, setShowMenu] = useState(false)
-  const [showEditModal, setShowEditModal] = useState(false)
   const [showConfirmModal, setShowConfirmModal] = useState(false)
   const [showDeleteToast, setShowDeleteToast] = useState(false) // State for showing delete success toast
 

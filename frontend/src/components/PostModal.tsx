@@ -7,7 +7,6 @@ interface PostModalProps {
 }
 
 const PostModal: React.FC<PostModalProps> = ({ closeModal }) => {
-  const [imagePreview, setImagePreview] = useState<string | null>(null)
   const [showToast, setShowToast] = useState<boolean>(false)
   const [toastMessage, setToastMessage] = useState<string>("")
 
@@ -25,7 +24,7 @@ const PostModal: React.FC<PostModalProps> = ({ closeModal }) => {
     // Prepare the form data
     const formData = new FormData()
     formData.append("id", `${id}`)
-    formData.append("title", e.currentTarget.title.value || "title")
+    formData.append("title", e.currentTarget.titl.value || "title")
     formData.append(
       "content",
       e.currentTarget.content.value ||
@@ -52,18 +51,6 @@ const PostModal: React.FC<PostModalProps> = ({ closeModal }) => {
       // Display error toast
       setToastMessage("Error creating blog post. Please try again later.")
       setShowToast(true)
-    }
-  }
-
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files.length > 0) {
-      const file = e.target.files[0]
-      // Read the file and set the image preview URL
-      const reader = new FileReader()
-      reader.onload = () => {
-        setImagePreview(reader.result as string)
-      }
-      reader.readAsDataURL(file)
     }
   }
 
