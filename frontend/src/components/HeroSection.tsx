@@ -6,7 +6,7 @@ const HeroSection = () => {
           <div className=" ">
             <div className="mb-8">
               <h1 className="text-4xl sm:text-5xl font-bold text-gray-800 leading-tight mb-4">
-                Welcome to HumorHub
+                Welcome to <span className="text-blue-500">Humor</span>Hub
               </h1>
               <p className="text-xl text-gray-600 mb-8">
                 Get ready to explore fascinating stories, insightful articles,

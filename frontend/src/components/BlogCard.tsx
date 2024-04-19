@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import placeholder from "../../public/placeholder-image.png"
-import ConfirmModal from "./ConfirmModal" // Assuming you have a ConfirmModal component
-import Toast from "./Toast" // Import the Toast component
+import ConfirmModal from "./ConfirmModal"
+import Toast from "./Toast"
 
 interface BlogCardProps {
   title: string
@@ -26,7 +26,7 @@ const BlogCard: React.FC<BlogCardProps> = ({
   const [image, setImage] = useState(placeholder)
   const [showMenu, setShowMenu] = useState(false)
   const [showConfirmModal, setShowConfirmModal] = useState(false)
-  const [showDeleteToast, setShowDeleteToast] = useState(false) // State for showing delete success toast
+  const [showDeleteToast, setShowDeleteToast] = useState(false)
 
   useEffect(() => {
     const fetchImage = async () => {
@@ -75,9 +75,9 @@ const BlogCard: React.FC<BlogCardProps> = ({
           "Content-Type": "application/json",
         },
       })
-      setShowConfirmModal(false) // Close the confirmation modal
-      setShowDeleteToast(true) // Show delete success toast
-      setTimeout(() => setShowDeleteToast(false), 3000) // Hide the toast after 3 seconds
+      setShowConfirmModal(false)
+      setShowDeleteToast(true)
+      setTimeout(() => setShowDeleteToast(false), 3000)
     } catch (error) {
       console.log(error)
     }

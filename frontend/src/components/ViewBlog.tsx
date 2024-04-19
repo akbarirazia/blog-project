@@ -63,17 +63,17 @@ const ViewBlog = () => {
   }
 
   return (
-    <div>
-      <div className="max-w-4xl mx-auto px-4 py-8">
+    <div className="min-h-screen">
+      <div className="max-w-5xl mx-auto px-4 py-8">
         <h1 className="text-3xl font-bold mb-4">{data?.title}</h1>
         <div className="flex flex-wrap mb-4">
-          <span className="bg-gray-200 text-gray-800 px-2 py-1 rounded-md mr-2 mb-2">
+          <span className="bg-blue-500 text-white px-2 py-1 rounded-md mr-2 mb-2">
             {data.tag}
           </span>
         </div>
-        <div className="flex items-center mb-4">
-          <span className="text-gray-600">{data?.minToRead} mins to read</span>
-          <div className="h-1 w-full bg-gray-300 mx-4"></div>
+        <div className=" flex items-center mb-4">
+          <span className="text-gray-600">{data?.min}</span>
+          <div className="h-1 w-10/12 bg-gray-300 mx-4"></div>
         </div>
         <img src={image || ""} alt={data?.title} className="mb-4" />
         <div className="prose">{data?.content}</div>

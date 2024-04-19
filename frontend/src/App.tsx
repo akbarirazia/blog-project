@@ -6,8 +6,6 @@ import BlogList from "./components/BlogList"
 import ViewBlog from "./components/ViewBlog"
 import Post from "./components/Post"
 import Edit from "./components/Edit"
-// import EditRoute from "./components/EditRoute";
-// import BlogListRoute from "./components/BlogListRoute";
 
 function App() {
   return (
