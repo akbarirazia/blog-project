@@ -1,85 +1,52 @@
 {
   "posts": [
     {
-      "id": "727",
-      "title": "j",
-      "content": "no content",
-      "tag": "",
-      "min": "",
-      "imageUrl": "undefined"
-    },
-    {
-      "id": "600",
-      "title": "ka",
-      "content": "lasd",
-      "tag": "dla",
-      "min": "sdladlk",
-      "imageUrl": "undefined"
-    },
-    {
-      "id": "339",
-      "title": "hello",
-      "content": "lja",
-      "tag": "aja",
-      "min": "daj",
-      "imageUrl": "undefined"
-    },
-    {
-      "id": "426",
-      "title": "Joke of the day!",
-      "content": "This is the beginning of the blog you write.",
-      "tag": "Funny",
-      "min": "3 MIN",
-      "imageUrl": "Screenshot from 2024-04-18 10-40-59.png"
-    },
-    {
-      "id": "583",
-      "title": "title",
-      "content": "lorem                 //Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas placerat nec neque non tempor. Cras viverra nunc a bibendum eleifend. Nulla facilisi. Aenean sed sapien eu turpis fermentum posuere. Vestibulum at porta odio. Nam dignissim magna turpis, id fermentum nulla sollicitudin sit amet.  Sed sed nibh vitae dui commodo suscipit. Curabitur aliquet lobortis odio, vel scelerisque tortor. Nunc nec sem nec nulla feugiat imperdiet. Etiam et semper ligula. Nulla facilisi. Suspendisse tempor risus sit amet ligula auctor, nec bibendum purus placerat.  Phasellus euismod fermentum mauris, ac lacinia metus egestas vitae. Ut nec ante eu purus blandit tristique. Curabitur faucibus tortor vitae lectus interdum, at scelerisque sapien vehicula. Vestibulum quis blandit sapien. Integer vel tortor efficitur, commodo turpis ac, vestibulum libero.  Praesent gravida euismod justo, nec fringilla sem laoreet quis. Integer ac nibh nec urna convallis imperdiet. Aliquam erat volutpat. Aenean at elit sapien. Aenean ut leo et lacus interdum mollis nec vel enim.  Proin non nunc eget leo blandit egestas. Nulla facilisi. Ut laoreet euismod libero, ac tristique metus congue eget. Quisque mattis felis non tellus fermentum, eu laoreet magna eleifend.  Sed auctor mauris nec risus tincidunt, vitae interdum sem tempor. Sed malesuada lacus in mi vestibulum tincidunt. Etiam quis eros ligula. Vivamus auctor, odio vitae auctor vulputate, ex risus volutpat lectus, ut placerat nisl ex id odio.",
-      "tag": "Tag",
-      "min": "7 MIN",
-      "imageUrl": "undefined"
-    },
-    {
-      "id": "9",
-      "title": "title",
-      "content": "Generic content, lorem ipsum dolor sit amet con etiam null tempor",
-      "tag": "Tag",
-      "min": "7 MIN",
-      "imageUrl": "skull.png"
+      "id": "1",
+      "title": "The Day I Accidentally Wore My Shirt Backwards",
+      "content": "You know it's going to be a great day when you start by putting your shirt on backwards! As I strutted confidently into the office, little did I know I was about to become the fashion icon of the year.",
+      "tag": "Fashion Fiasco",
+      "min": "5 MIN READ",
+      "imageUrl": "backwards.jpg"
     },
     {
       "id": "2",
-      "title": "Mobile",
-      "content": "SOmething",
-      "tag": "Hello",
-      "min": "8 MIN",
-      "imageUrl": "photo_2024-04-08_09-06-05.jpg"
-    },
-    {
-      "id": "13",
-      "title": "Eid",
-      "content": "Mubarak",
-      "tag": "easy",
-      "min": "Lays",
-      "imageUrl": "Screenshot from 2024-04-09 19-50-13.png"
-    },
-    {
-      "id": "1",
-      "title": "What is life but a teardrop in the eye of infinity?",
-      "min": "7 MIN READ",
-      "content": "Mollis pretium integer eros et dui orci, lectus nec elit sagittis neque. Dignissim ac nullam semper aliquet volutpat, ut scelerisque.",
-      "tags": "Forest",
-      "imageUrl": "picture 2.png"
+      "title": "The Great Microwave Burrito Disaster",
+      "content": "Ah, the microwave burrito: a humble meal for many, a culinary adventure for me. Little did I know that pressing '2:00' instead of '1:00' would lead to a fiery explosion and a kitchen smelling like a mix of sadness and burnt beans.",
+      "tag": "Kitchen Chronicles",
+      "min": "3 MIN READ",
+      "imageUrl": "microwave.jpg"
     },
     {
       "id": "3",
-      "title": "What is life but a teardrop in the eye of infinity?",
+      "title": "The Misadventures of Pet Sitting a Goldfish",
+      "content": "When my friend asked me to watch his goldfish while he was away, I thought it would be a breeze. Little did I know, Goldie had a penchant for escaping her bowl and exploring the wide world of my living room.",
+      "tag": "Fish Tales",
+      "min": "4 MIN READ",
+      "imageUrl": "fish.jpg"
+    },
+    {
+      "id": "4",
+      "title": "The Day I Tried Extreme Ironing",
+      "content": "Ironing: a mundane task, or the next extreme sport? With my ironing board strapped to my back and my trusty iron in hand, I scaled mountains, surfed waves, and ironed my way into the history books (and a few wrinkles).",
+      "tag": "Extreme Ironing",
+      "min": "6 MIN READ",
+      "imageUrl": "iron-man.jpg"
+    },
+    {
+      "id": "5",
+      "title": "The Great Sock Mystery",
+      "content": "In the land of lost socks, I am king. Every laundry day, another sock disappears into the void, leaving its mate behind in despair. But fear not, for I have embarked on a quest to find the missing socks and reunite them with their partners!",
+      "tag": "Sock Saga",
+      "min": "5 MIN READ",
+      "imageUrl": "socks.jpg"
+    },
+    {
+      "id": "6",
+      "title": "The Art of Procrastination: A Masterclass",
+      "content": "Why do today what you can put off until tomorrow? Join me on a journey through the fine art of procrastination, where deadlines are merely suggestions and Netflix binges are Olympic events. Step 1: Read this blog post. Step 2: Maybe start that thing you were supposed to do.",
+      "tag": "Procrastination Prodigy",
       "min": "7 MIN READ",
-      "content": "Mollis pretium integ",
-      "tags": "Forest",
-      "imageUrl": "FuncsVar.png",
-      "tag": ""
+      "imageUrl": "procrastination-memes-feat-jan-11.jpg"
     }
   ]
 }
