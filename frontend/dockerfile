@@ -1,4 +1,4 @@
-# Use official Node.js image as base
+## Use official Node.js image as base
 # FROM node:14 as build
 
 # # Set working directory inside the container
@@ -14,16 +14,16 @@
 # COPY . .
 
 # # Build the React app
-# # RUN npm run build
+# RUN npm run build
 
 # # Start a new stage from the base image
-# # FROM nginx:alpine
+# FROM nginx:alpine
 
 # # # Copy build files from the previous stage
-# # COPY --from=build /app/build /usr/share/nginx/html
+# COPY --from=build /app/build /usr/share/nginx/html
 
 # # Expose port 80
-# EXPOSE 80:80
+# EXPOSE 5173:5173
 
 # # Command to run nginx
 # CMD ["npm", "run", "dev"]
