@@ -157,29 +157,7 @@ function Edit() {
           </div>
         </div>
       )}
-      {showConfirmModal && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white rounded-md p-8 max-w-lg w-full">
-            <p className="text-lg font-semibold mb-4">
-              Are you sure you want to edit this blog?
-            </p>
-            <div className="flex justify-end">
-              <button
-                className="bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-md mr-2"
-                onClick={handleCancelModalClose}
-              >
-                No
-              </button>
-              <button
-                className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md"
-                onClick={handleSubmit}
-              >
-                Yes
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+
       <div className="bg-white rounded-md p-8 lg:w-1/2 mx-auto my-0">
         <h2 className="text-4xl font-bold mb-4">Create a New Blog Post</h2>
         <form onSubmit={(e) => handleSubmit(e)}>

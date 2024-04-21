@@ -1,12 +1,14 @@
 const Navbar = () => {
   return (
-    <nav className="bg-gray-800 py-4">
+    <nav className="bg-gray-800 py-4 px-2">
       <div className="container mx-auto flex justify-between items-center">
-        {/* Left side - Logo, Home, About, GitHub */}
         <div className="flex items-center">
           {/* Logo */}
-          <a href="#" className="text-white text-2xl font-bold mr-6">
-            HumorHub
+          <a
+            href="https://blog-project-2-nu.vercel.app/"
+            className="text-white text-2xl font-bold mr-6"
+          >
+            <span className="text-blue-600">Humor</span>Hub
           </a>
         </div>
 

@@ -45,18 +45,20 @@ function BlogList() {
     <div>
       <HeroSection />
       <PostBlog />
-      {isLoading ? (
-        <Loading />
-      ) : (
-        <main
-          className="w-screen flex justify-center flex-wrap items-center"
-          id="main"
-        >
-          <div className="container flex flex-wrap">
-            {data && renderBlog(data)}
-          </div>
-        </main>
-      )}
+      <div className="min-h-screen">
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <main
+            className="w-screen flex justify-center flex-wrap items-center "
+            id="main"
+          >
+            <div className="container flex flex-wrap">
+              {data && renderBlog(data)}
+            </div>
+          </main>
+        )}
+      </div>
     </div>
   )
 }
