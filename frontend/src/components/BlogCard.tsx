@@ -101,7 +101,8 @@ const BlogCard: React.FC<BlogCardProps> = ({
           onClose={() => setShowDeleteToast(false)}
         />
       )}
-      <div className="lg:w-1/3 w-full px-2 pb-12" onClick={handleClose}>
+
+      <div className=" px-2 pb-12" onClick={handleClose}>
         <div className="h-full bg-white rounded shadow-md hover:shadow-lg relative smooth">
           <div className="cursor-pointer">
             <Link to={`/view/${id}`}>

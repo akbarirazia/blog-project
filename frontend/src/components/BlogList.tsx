@@ -3,6 +3,7 @@ import Loading from "./Loading"
 import PostBlog from "./PostBlog"
 import BlogCard from "./BlogCard"
 import HeroSection from "./HeroSection"
+import { motion } from "framer-motion"
 
 function BlogList() {
   const [data, setData] = useState<any>(null)
@@ -25,19 +26,26 @@ function BlogList() {
     }
 
     fetchData()
-  }, [data])
+  }, [])
 
   const renderBlog = (data: any) => {
     return data.posts.map((blog: any, index: number) => (
-      <BlogCard
-        key={index}
-        title={blog.title}
-        content={blog.content}
-        imageUrl={blog.imageUrl}
-        min={blog.min}
-        tag={blog.tag}
-        id={blog.id}
-      />
+      <motion.div
+        initial={{ opacity: 0, x: 0, y: index * 50 }}
+        animate={{ opacity: 1, x: 0, y: 0 }}
+        transition={{ duration: index + 1 }}
+        className="container flex flex-wrap lg:w-1/3 w-full gap-2"
+      >
+        <BlogCard
+          key={index}
+          title={blog.title}
+          content={blog.content}
+          imageUrl={blog.imageUrl}
+          min={blog.min}
+          tag={blog.tag}
+          id={blog.id}
+        />
+      </motion.div>
     ))
   }
 
