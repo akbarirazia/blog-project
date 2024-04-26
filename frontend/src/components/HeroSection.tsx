@@ -7,7 +7,7 @@ const HeroSection = () => {
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1 }}
-      className="  w-screen flex justify-center items-center background min-h-screen"
+      className="  w-screen flex justify-center items-center background lg:min-h-screen "
     >
       <SplineHero />
     </motion.section>
