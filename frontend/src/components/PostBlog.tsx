@@ -10,7 +10,7 @@ function PostBlog() {
           Painful Funny Blogs
         </h1>
         <br />
-        <p className="text-md  lg:w-2/3 text-center mx-auto my-0">
+        <p className="text-md  lg:w-2/3 text-center mx-auto my-0 px-4">
           Hey! How did you like the dazzling, stunning Hero Section? Were you
           expecting to see some beautifully rendered funny blogs? Well lets say
           my muscles are made for backend or for nothing :'( How do you like my
@@ -18,7 +18,7 @@ function PostBlog() {
           brother?
           <br />
           <br />
-          <span className="text-blue-500">
+          <span className="text-blue-500 block text-center">
             #UIFail #BeautifulHeroConfusedBlogs
           </span>
         </p>

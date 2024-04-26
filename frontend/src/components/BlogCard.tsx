@@ -84,7 +84,7 @@ const BlogCard: React.FC<BlogCardProps> = ({
   }
 
   const truncatedContent =
-    content.length > 200 ? `${content.slice(0, 200)}...` : content
+    content.length > 200 ? `${content.slice(0, 150)}...` : content
 
   return (
     <>

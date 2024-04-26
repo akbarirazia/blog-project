@@ -18,6 +18,10 @@ html,
 body {
   overflow-x: hidden;
   background: #f1efef !important;
+  font-family: "Montserrat", sans-serif;
+}
+* {
+  font-family: "Montserrat", sans-serif !important;
 }
 
 #root {
